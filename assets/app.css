@@ -796,6 +796,10 @@ body.is-loading { overflow: hidden; }
   border-top: 1px solid var(--line);
 }
 .actionbar .btn { width: 100%; height: 48px; }
+/* down by default: app.js raises it only once no other copy of the same action
+   is on screen, so the hero never shows Get a quote twice */
+.actionbar { transform: translateY(112%); transition: transform .5s var(--ease); }
+.actionbar.is-on { transform: none; }
 @media (max-width: 860px) { .actionbar { display: block; } }
 
 /* ---------- mobile menu ---------- */

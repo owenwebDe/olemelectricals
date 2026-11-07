@@ -57,9 +57,41 @@
 
   /* ---------------- reduced motion / no GSAP: stop here ---------------- */
 
+  /* ---------------- sticky action bar ---------------- */
+  /* The bar carries the same action as the hero button and the form's submit.
+     Two of them on screen at once reads as a duplicate, so the bar stays down
+     while either of those is in view and rises once neither is. Lives before
+     the reduced-motion bail-out: it is the page's main action on a phone. */
+  function stickyBar() {
+    var bar = doc.querySelector('.actionbar');
+    if (!bar) return;
+    var rivals = [
+      doc.querySelector('.hero .btn-row'),
+      doc.querySelector('#quote .quote__send')
+    ].filter(Boolean);
+
+    // no observer, or nothing to clash with: the bar is simply always up
+    if (!rivals.length || !window.IntersectionObserver) {
+      bar.classList.add('is-on');
+      return;
+    }
+
+    var onScreen = [];
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var i = rivals.indexOf(e.target);
+        if (i > -1) onScreen[i] = e.isIntersecting;
+      });
+      var clash = onScreen.some(Boolean);
+      bar.classList.toggle('is-on', !clash);
+    });
+    rivals.forEach(function (r) { io.observe(r); });
+  }
+
   // the quote form is the page's transaction, not an animation: it is wired up
   // before the reduced-motion bail-out so it works with every effect switched off
   quoteForm();
+  stickyBar();
 
   if (reduce || !hasGSAP) {
     body.classList.remove('is-loading');
