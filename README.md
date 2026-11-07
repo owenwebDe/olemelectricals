@@ -31,16 +31,18 @@ Midnight navy ground, dusk blue structure, a slash of sunset orange.
 | `--paper-2` | `#0D1524` | dusk — raised bands and panels |
 | `--paper-3` | `#162034` | deepest surface / image placeholder |
 | `--ink` / `--ink-2` | `#EEF2F8` / `#8795AC` | text and muted text |
-| `--brand` | `#4C7DC4` | dusk blue — eyebrows, rules, step numbers, the conductor field |
-| `--accent` | `#FF7A3D` | sunset orange — buttons, one word per headline, hovers |
+| `--brand` | `#4C7DC4` | dusk blue — eyebrows, supply numbers, the conductor field |
+| `--accent-g` | `#A6C5EE → #5584C4` | lit dusk blue — buttons and the highlighted word |
+| `--accent` | `#FF7A3D` | sunset orange — **light only, never type or a button** |
 
-Unlike the Fidotech build, the structural colour here clears **4.7:1** on the
-ground, so dusk blue carries 12px text itself. That is what leaves orange free to
-be a slash: it appears on the primary buttons, one word in each headline, the
-supply numbers and the hover states, and nowhere else. Used more widely it stops
-being a slash.
+**Orange never touches type or a button.** It appears only as a graphic mark: the
+dash before each eyebrow, the peaks in the conductor field, the step progress
+bars, the scroll cue, and the glow a card throws on hover. Everything that is
+read or clicked is blue.
 
-Orange buttons take near-black text — white on `#FF7A3D` is 2.6:1 and fails.
+The structural blue clears **4.7:1** on this ground, so it carries 12px text
+itself. Buttons use a lit dusk-blue gradient with near-black text, which holds
+**5.1:1** even at the gradient darkest corner.
 
 Every corner is square: `--r` and `--r-lg` are both `0`.
 
